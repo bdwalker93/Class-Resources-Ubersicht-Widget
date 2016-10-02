@@ -26,28 +26,28 @@ slack: (url) ->
   return "" if (!url)
   """
   <a href="#{url}">
-    <img class="link_icon" src="uci-class.widget/slack.jpg" alt="Slack image missing"/>
+    <img class="link_icon" src="uci-class.widget/icon_images/slack.jpg" alt="Slack image missing"/>
   </a>
   """
 groupme: (url) ->
   return "" if (!url)
   """
   <a href="#{url}">
-    <img class="link_icon" src="uci-class.widget/groupme.jpg" alt="Groupme image missing"/>
+    <img class="link_icon" src="uci-class.widget/icon_images/groupme.jpg" alt="Groupme image missing"/>
   </a>
   """
 gdrive: (url) ->
   return "" if (!url)
   """
   <a href="#{url}">
-    <img class="link_icon" src="uci-class.widget/gdrive.png" alt="GDrive image missing"/>
+    <img class="link_icon" src="uci-class.widget/icon_images/gdrive.png" alt="GDrive image missing"/>
   </a>
   """
 www: (url) ->
   return "" if (!url)
   """
   <a href="#{url}">
-    <img class="link_icon" src="uci-class.widget/www.jpg" alt="WWW image missing"/>
+    <img class="link_icon" src="uci-class.widget/icon_images/www.jpg" alt="WWW image missing"/>
   </a>
   """
 class: (name, url) ->
