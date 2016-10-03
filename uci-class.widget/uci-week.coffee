@@ -22,55 +22,37 @@ session: (wk, numWeeks) -> (name) =>
 weekString: (wk) ->
   q = @session(wk, 10)
   q('spring') || q('fall') || ''
-slack: (url) ->
-  return "" if (!url)
+iconMap:
+  www: 'www.svg'
+  gdrive: 'gdrive.png'
+  groupme: 'groupme.jpg'
+  slack: 'slack.jpg'
+img: (key) -> """
+  <img src="uci-week.widget/img/#{@iconMap[key]}" />
   """
-  <a href="#{url}">
-    <img class="link_icon" src="uci-class.widget/icon_images/slack.jpg" alt="Slack image missing"/>
-  </a>
-  """
-groupme: (url) ->
-  return "" if (!url)
-  """
-  <a href="#{url}">
-    <img class="link_icon" src="uci-class.widget/icon_images/groupme.jpg" alt="Groupme image missing"/>
-  </a>
-  """
-gdrive: (url) ->
-  return "" if (!url)
-  """
-  <a href="#{url}">
-    <img class="link_icon" src="uci-class.widget/icon_images/gdrive.png" alt="GDrive image missing"/>
-  </a>
-  """
-www: (url) ->
-  return "" if (!url)
-  """
-  <a href="#{url}">
-    <img class="link_icon" src="uci-class.widget/icon_images/www.jpg" alt="WWW image missing"/>
-  </a>
-  """
-class: (name, url) ->
-  return "#{name}" if (!url)
-  """
-  <a href="#{url}">
-    #{name}
-  </a>
-  """
+resource: (c) -> (key) =>
+  url = c[key]
+  if (url)
+    """<a href="#{url}">#{@img(key)}</a>"""
+  else
+    ""
+renderIcons: (gen) ->
+  out = ""
+  for key,v of @iconMap
+    out += gen(key)
+  out
 renderRows: ->
   out = ""
   for key of @courses
     c = @courses[key]
+    r = @resource(c)
     out+="""
       <tr>
         <td>
-          #{@www(c.www)}
-          #{@gdrive(c.gdrive)}
-          #{@slack(c.slack)}
-          #{@groupme(c.groupme)}
+          #{@renderIcons(r)}
         </td>
         <td>
-          #{@class(c.name, c.url)}
+          <a href="#{c.url}">#{c.name}</a>
         </td>
       </tr>
     """
@@ -83,7 +65,10 @@ render: (wk) -> """
       <tr>
         <td class="eee" colspan=2>
           <a href="https://www.reg.uci.edu/calendars/quarterly/2016-2017/quarterly16-17.html">Calendar</a> |
-          <a href="https://eee.uci.edu/myeee/">EEE</a>
+          <a href="https://eee.uci.edu/myeee/">EEE</a> |
+          <a href="https://drive.google.com/drive/u/1/folders/0B-TeA-VgdXKwT2dfQk5rbjVpSlU">
+            #{@img('gdrive')}
+          </a>
         </td>
       </tr>
       #{@renderRows()}
@@ -96,27 +81,20 @@ style: """
   color: #141f33
   font-family: Helvetica Neue
   font-weight: 300
-  left: 10%
+  left: 0%
   line-height: 1.5
   padding: 20px
   top: 10%
-
   a
     text-decoration: none
-
   h1
     font-size: 20px
     font-weight: 300
     margin: 16px 0 8px
-
   h2
     font-size: 16px
     font-weight: 200
     margin: 16px 0 8px
-
   .eee
-    border-bottom: 1px solid #ccc
-
-  .link_icon
-    max-height: 30px;
+    border-bottom: 1px solid #ccc;
 """
