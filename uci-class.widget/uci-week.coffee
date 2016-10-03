@@ -8,6 +8,7 @@ courses: [
     name: "INF 191: Project Course"
     www: "https://canvas.eee.uci.edu/courses/2966"
     groupme: "https://web.groupme.com/chats"
+    slack: "https://tableauautomation.slack.com/messages/general"
 ]
 command: "echo $(date +'%V')"
 refreshFrequency: 86400 * 1000 # 24 hours
@@ -23,12 +24,12 @@ weekString: (wk) ->
   q = @session(wk, 10)
   q('spring') || q('fall') || ''
 iconMap:
-  www: 'www.svg'
+  www: 'www.jpg'
   gdrive: 'gdrive.png'
   groupme: 'groupme.jpg'
   slack: 'slack.jpg'
 img: (key) -> """
-  <img src="uci-week.widget/img/#{@iconMap[key]}" />
+  <img class="img_icon" src="uci-class.widget/img/#{@iconMap[key]}" />
   """
 resource: (c) -> (key) =>
   url = c[key]
@@ -96,5 +97,7 @@ style: """
     font-weight: 200
     margin: 16px 0 8px
   .eee
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc
+  .img_icon
+    max-height: 28px;
 """
