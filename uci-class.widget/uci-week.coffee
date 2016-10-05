@@ -8,7 +8,12 @@ courses: [
     name: "INF 191: Project Course"
     www: "https://canvas.eee.uci.edu/courses/2966"
     groupme: "https://web.groupme.com/chats"
-    slack: "https://tableauautomation.slack.com/messages/general"
+    slack: "https://tableauautomation.slack.com/messages/@slackbot/"
+    gdrive: "https://drive.google.com/drive/u/1/folders/0B-TeA-VgdXKwVkRVZlRvRkxFZWc"
+    asana: "https://app.asana.com/0/190576529875988/list"
+    instagantt: "https://instagantt.com/app/#"
+    when2meet: "http://www.when2meet.com/?5645971-37uAg"
+    tableau: "http://tableau.ics.uci.edu/"
 ]
 command: "echo $(date +'%V')"
 refreshFrequency: 86400 * 1000 # 24 hours
@@ -28,6 +33,12 @@ iconMap:
   gdrive: 'gdrive.png'
   groupme: 'groupme.jpg'
   slack: 'slack.jpg'
+  instagantt: 'instagantt.png'
+  asana: 'asana.png'
+  canvas: 'canvas.ico'
+  tableau: 'tableau.jpg'
+  when2meet: 'when2meet.jpg'
+  discord: "discord.png"
 img: (key) -> """
   <img class="img_icon" src="uci-class.widget/img/#{@iconMap[key]}" />
   """
@@ -67,8 +78,6 @@ render: (wk) -> """
         <td class="eee" colspan=2>
           <a href="https://www.reg.uci.edu/calendars/quarterly/2016-2017/quarterly16-17.html">Calendar</a> |
           <a href="https://eee.uci.edu/myeee/">EEE</a> |
-          <a href="https://drive.google.com/drive/u/1/folders/0B-TeA-VgdXKwT2dfQk5rbjVpSlU">
-            #{@img('gdrive')}
           </a>
         </td>
       </tr>
