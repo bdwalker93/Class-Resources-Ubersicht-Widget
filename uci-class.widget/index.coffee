@@ -1,5 +1,5 @@
 # you can debug at http://localhost:41416/
-configFilePath: '~/uci-widget-config.json'
+configFilePath: '~/.uci-widget-config.json'
 command: "echo $(date +'%V')"
 refreshFrequency: 30 * 60 * 1000
 weekSliceMap:
