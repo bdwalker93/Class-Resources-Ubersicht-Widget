@@ -26,6 +26,7 @@ iconMap:
   when2meet: 'clock.png'
   discord: "discord.png"
   github: "github.ico"
+  piazza: "piazza.ico"
 img: (key) -> """
   <img src="uci-class.widget/img/#{@iconMap[key]}" />
   """
